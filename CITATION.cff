@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "MATLAB functions for EEG/MEG functional connectivity, graph analysis, local activation and statistics"
+type: software
+authors:
+  - family-names: "Gijón-Ortego"
+    given-names: "Jorge"
+    orcid: "https://orcid.org/[0000-0000-0000-0000]"
+    affiliation: "[AFFILIATION]"
+version: 1.0.0
+date-released: 2026-10-28
+license: MIT
+repository-code: "https://github.com/[USER]/[REPO]"
+keywords:
+  - EEG
+  - MEG
+  - functional connectivity
+  - graph theory
+  - sample entropy
+  - Lempel-Ziv complexity
+  - robust coefficient of variation
+  - false discovery rate
+  - MATLAB
