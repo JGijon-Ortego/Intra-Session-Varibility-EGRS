@@ -1,6 +1,6 @@
 # Intra-session variability of EEG signal features in externally-guided and classical resting state paradigms
 
-MATLAB functions used in the paper *Intra-session variability of EEG signal features in externally-guided and classical resting state paradigms* (Gijón-Ortego J, et al.; journal, year and DOI to be added).
+MATLAB functions used in the paper *Intra-session variability of EEG signal features in externally-guided and classical resting state paradigms* (Gijón-Ortego J, et al.; 2026).
 
 The code computes the EEG signal features analyzed in the study and the statistics used to quantify their variability across epochs.
 
