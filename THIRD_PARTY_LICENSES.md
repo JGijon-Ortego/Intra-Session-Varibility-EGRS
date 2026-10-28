@@ -38,4 +38,4 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 See the "Credits" section of `README.md` for the original authors of the functions that are not solely written by the repository author.
 
-TODO before publishing: confirm with these authors (or their license terms) that redistribution in this repository under the stated license is permitted, and update this file accordingly.
+
