@@ -1,70 +1,64 @@
-# EEG/MEG analysis functions (MATLAB)
+# Intra-session variability of EEG signal features in externally-guided and classical resting state paradigms
 
-MATLAB functions for functional connectivity, graph-theoretical analysis, local activation/complexity and statistics of EEG/MEG signals.
+MATLAB functions used in the paper *Intra-session variability of EEG signal features in externally-guided and classical resting state paradigms* (Gijón-Ortego J, et al.; journal, year and DOI to be added).
 
-## Structure and functions
+The code computes the EEG signal features analyzed in the study and the statistics used to quantify their variability across epochs.
 
-|---|---|---|
-| 'FC' | ‘computeAEC’ | Amplitude envelope correlation between channels |
-| ‘FC’ | ‘computePLI’ | Phase lag index between all channel pairs |
-| ‘FC’ | ‘orthogonalizeChannels’ | Pairwise orthogonalization to remove zero-lag leakage (O'Neill et al., 2015) |
-| ‘Graph’ | ‘computeNodeStrength’ | Node strength (weighted degree), undirected graphs |
-| ‘Graph’ | ‘computeClusteringCoefficient’ | Nodal and global clustering coefficient (weighted, directed) |
-| ‘Graph’ | ‘computePathLength’ | Characteristic path length, efficiency, eccentricity, radius, diameter |
-| ‘Graph’ | ‘surrogateGraph’ | Surrogate graph by shuffling connections |
-| ‘Local_Activ’ | ‘computeMedianFrequency’ | Median frequency of a PSD within a band |
-| ‘Local_Activ’ | ‘computeShannonEntropy’ | Normalized Shannon entropy of a PSD within a band |
-| ‘Local_Activ’ | ‘computeLZC’ | Lempel-Ziv complexity |
-| ‘Local_Activ’ | ‘computeSampleEntropy’ | Sample entropy (SampEn) |
-| ‘Stats’ | ‘fdr_BH’ | Benjamini-Hochberg FDR correction for multiple comparisons |
-| ‘Stats’ | ‘computeRobustCV’ | Robust coefficient of variation, 1.4826 x MAD / median, along a chosen dimension (e.g., across epochs) |
+## Contents
 
-Signals must be filtered in the band of interest before computing AEC, PLI or LZC.
+**'FC/'** Functional connectivity
+- 'computeAEC': amplitude envelope correlation.
+- 'computePLI': phase lag index.
+- 'orthogonalizeChannels': pairwise orthogonalization to remove zero-lag leakage (O'Neill et al., 2015).
 
-## Installation
+**'Graph/'** Graph metrics
+- 'computeNodeStrength': node strength (weighted degree).
+- 'computeClusteringCoefficient': nodal and global clustering coefficient.
+- 'computePathLength': characteristic path length, efficiency, eccentricity, radius and diameter.
+- 'surrogateGraph': surrogate graph obtained by shuffling connections.
 
-‘‘‘matlab
-addpath(genpath('path/to/repo'));
-‘‘‘
+**'Local_Activ/'** Local activation and complexity
+- 'computeMedianFrequency': median frequency of the power spectrum.
+- 'computeShannonEntropy': normalized Shannon entropy of the power spectrum.
+- 'computeLZC': Lempel-Ziv complexity.
+- 'computeSampleEntropy': sample entropy.
 
-## Dependencies
+**'Stats/'** Statistics
+- 'fdr_BH': Benjamini-Hochberg false discovery rate correction.
+- 'computeRobustCV': robust coefficient of variation (1.4826 x MAD / median).
 
-- MATLAB with Signal Processing Toolbox (‘hilbert’) and Statistics and Machine Learning Toolbox (‘corr’, ‘pdist’, ‘nansum’ in older versions).
-- [Brain Connectivity Toolbox](https://sites.google.com/site/bctnet) (‘distance_wei’, ‘charpath’), required by ‘computePathLength’. Install it separately and add it to the MATLAB path.
-- ‘fdr_BH’ uses ‘cummin’ with the ‘'reverse'‘ option (MATLAB R2023a or later).
-- ‘computeLZC’ uses ‘findstr’, which is deprecated in recent MATLAB versions but still available.
+## Requirements
+
+- MATLAB with the Signal Processing and Statistics and Machine Learning toolboxes.
+- [Brain Connectivity Toolbox](https://sites.google.com/site/bctnet), needed by 'computePathLength'.
+- MATLAB R2023a or later for 'fdr_BH' (uses 'cummin' with the 'reverse' option).
 
 ## Usage
 
-‘‘‘matlab
-aec = computeAEC(signal);                       % signal: samples x channels
-pli = computePLI(signal, size(signal,2));
-[lambda, eff] = computePathLength(pli);
-[clcMean, clcNodal] = computeClusteringCoefficient(pli);
-lzc = computeLZC(signal(:,1));
-mf  = computeMedianFrequency(psd, f, [8 13]);
-[pAdj, ~, h] = fdr_BH(pvalues, 0.05);
-cv  = computeRobustCV(param, 4);                % param: [parameters x subjects x ROIs x epochs]
-‘‘‘
+    addpath(genpath('path/to/repo'));
+
+    aec = computeAEC(signal);                    % signal: samples x channels
+    pli = computePLI(signal, size(signal, 2));
+    [lambda, efficiency] = computePathLength(pli);
+    cv  = computeRobustCV(param, 4);             % robust CV across the 4th dimension (epochs)
+
+Signals must be band-pass filtered before computing AEC, PLI or Lempel-Ziv complexity.
 
 ## Citation
 
-See ‘CITATION.cff’. A DOI is issued through Zenodo for each release.
+If you use this code, please cite the paper above and this repository (see 'CITATION.cff').
 
 ## License
 
-MIT (see ‘LICENSE’) for the original code in this repository. Portions derived from the Brain Connectivity Toolbox are under the BSD 3-Clause License (see ‘THIRD_PARTY_LICENSES.md’).
+MIT (see 'LICENSE'). Parts derived from the Brain Connectivity Toolbox are under the BSD 3-Clause License (see 'THIRD_PARTY_LICENSES.md').
 
 ## Credits
 
-Repository author: Jorge Gijón-Ortego (‘computeRobustCV’ and the repository organization).
+Repository author: Jorge Gijón-Ortego.
 
-Several functions are adaptations of code written by other authors:
-
-| Function | Original author(s) |
-|---|---|
-| ‘computeNodeStrength’, ‘surrogateGraph’ | Javier Gomez-Pilar |
-| ‘computeClusteringCoefficient’, ‘computePathLength’ | Javier Gomez-Pilar; based on the Brain Connectivity Toolbox (Rubinov and Sporns) |
-| ‘computeMedianFrequency’, ‘computeShannonEntropy’ | Jesus Poza Crespo |
-| ‘computeLZC’ | Daniel Abasolo (original code); Carlos Gomez Pena (modifications) |
-| `computeSampleEntropy`, `fdr_BH` | V. Martinez-Cagigal |
+Some functions are adaptations of code by other authors:
+- Javier Gomez-Pilar: 'computeNodeStrength', 'surrogateGraph', 'computeClusteringCoefficient', 'computePathLength'.
+- Jesús Poza Crespo: 'computeMedianFrequency', 'computeShannonEntropy'.
+- Daniel Abasolo and Carlos Gómez Peña: 'computeLZC'.
+- V. Martínez-Cagigal: 'computeSampleEntropy', 'fdr_BH'.
+- Rubinov and Sporns (Brain Connectivity Toolbox): basis of the clustering coefficient and path length functions.
