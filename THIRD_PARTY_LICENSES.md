@@ -2,7 +2,7 @@
 
 ## Brain Connectivity Toolbox (BCT)
 
-Parts of `Graph/computeClusteringCoefficient.m` and `Graph/computePathLength.m` are derived from, or depend on, the Brain Connectivity Toolbox (https://sites.google.com/site/bctnet). Reference: Rubinov M, Sporns O (2010). NeuroImage 52:1059-1069.
+Parts of 'Graph/computeClusteringCoefficient.m' and 'Graph/computePathLength.m' are derived from, or depend on, the Brain Connectivity Toolbox (https://sites.google.com/site/bctnet). Reference: Rubinov M, Sporns O (2010). NeuroImage 52:1059-1069.
 
 BSD 3-Clause License text, reproduced as provided:
 
