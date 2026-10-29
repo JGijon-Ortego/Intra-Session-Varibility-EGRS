@@ -1,21 +1,10 @@
-cff-version: 1.2.0
-title: "MATLAB functions for the paper Intra-session variability of EEG signal features in externally-guided and classical resting state paradigms"
+cff-version: 1.1.0
 message: "If you use this software, please cite it as below."
-type: software
-version: 1.0.1
-date-released: 2026-10-29
-license: "MIT"
-abstract: "MATLAB functions for functional connectivity, graph metrics, local activation and complexity measures, and statistics used to quantify the intra-session variability of EEG signal features in externally-guided and classical resting state paradigms."
 authors:
-  - given-names: Jorge
-    family-names: Gijón-Ortego
-    affiliation: "University of Valladolid"
-    orcid: "[https://orcid.org/0000-0002-7532-7134](https://orcid.org/0000-0002-7532-7134)"
-keywords:
-  - EEG
-  - functional connectivity
-  - graph theory
-  - sample entropy
-  - Lempel-Ziv complexity
-  - robust coefficient of variation
-  - MATLAB
+- family-names: Gijon-Ortego
+  given-names: Jorge
+  affiliation: University of Valladolid
+  orcid: https://orcid.org/0000-0002-7532-7134
+title: MATLAB functions for the paper Intra-session variability of EEG signal features in externally-guided and classical resting state paradigms
+version: v1.0.3
+date-released: 2026-10-29
