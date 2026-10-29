@@ -24,11 +24,13 @@ The code computes the EEG signal features analyzed in the study and the statisti
 - 'computeSampleEntropy': sample entropy.
 
 **'Stats/'** Statistics
+- 'computeRobustCV': robust coefficient of variation, RCV (1.4826 x MAD / median).
+- 'dif_RCV': mean paired difference of the RCV between two conditions (statistic used in the bootstrap comparison).
 - 'fdr_BH': Benjamini-Hochberg false discovery rate correction.
-- 'computeRobustCV': robust coefficient of variation (1.4826 x MAD / median).
 
-**'Examples/'** Example analysis
-- 'example_pipeline': complete example that computes all the features and the robust CV across epochs. The signals are not included; the script describes the expected input arrays.
+**'Examples/'** Example scripts (the signals and the results are not included; each script describes the input variables it expects)
+- 'example_pipeline': how to compute the parameters (local activation, functional connectivity and graph metrics) for each epoch, and the RCV across epochs.
+- 'example_statistics': statistical analysis used to compare the RCV between conditions (bootstrap of the mean paired difference, 95% confidence intervals and Benjamini-Hochberg FDR correction). It starts from the RCV results, which must be downloaded or computed beforehand with 'example_pipeline'.
 
 ## Requirements
 
