@@ -3,6 +3,7 @@ title: "MATLAB functions for the paper Intra-session variability of EEG signal f
 message: "If you use this software, please cite it as below."
 type: software
 version: 1.0.1
+date-released: 2026-10-29
 license: "MIT"
 abstract: "MATLAB functions for functional connectivity, graph metrics, local activation and complexity measures, and statistics used to quantify the intra-session variability of EEG signal features in externally-guided and classical resting state paradigms."
 authors:
